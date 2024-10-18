@@ -316,6 +316,17 @@ var TweenData = new Class({
             {
                 this.current = this.interpolation(this.interpolationData, v);
             }
+            else if (this.current instanceof Phaser.Math.Vector3)
+            {
+                this.current.x = this.start.x + ((this.end.x - this.start.x) * v);
+                this.current.y = this.start.y + ((this.end.y - this.start.y) * v);
+                this.current.z = this.start.z + ((this.end.z - this.start.z) * v);
+            }
+            else if (this.current instanceof Phaser.Math.Vector2)
+            {
+                this.current.x = this.start.x + ((this.end.x - this.start.x) * v);
+                this.current.y = this.start.y + ((this.end.y - this.start.y) * v);
+            }
             else
             {
                 this.current = this.start + ((this.end - this.start) * v);

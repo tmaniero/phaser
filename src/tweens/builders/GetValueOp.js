@@ -214,7 +214,21 @@ var GetValueOp = function (key, propertyValue)
     }
     else if (t === 'object')
     {
-        if (hasGetters(propertyValue))
+        if (propertyValue instanceof Phaser.Math.Vector3)
+        {
+            getEnd = function ()
+            {
+                return propertyValue.clone();
+            };
+        }
+        else if (propertyValue instanceof Phaser.Math.Vector2)
+        {
+            getEnd = function ()
+            {
+                return propertyValue.clone();
+            };
+        }
+        else if (hasGetters(propertyValue))
         {
             /*
             x: {
