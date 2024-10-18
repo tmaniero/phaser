@@ -267,9 +267,9 @@ var TweenData = new Class({
 
             this.end = this.getEndValue(target, key, this.start, targetIndex, totalTargets, tween);
 
-            this.current = this.start;
+            this.current = this.getStartValue(target, key, target[key], targetIndex, totalTargets, tween);
 
-            target[key] = this.start;
+            target[key] = this.current;
 
             this.setPlayingForwardState();
 
@@ -326,7 +326,7 @@ var TweenData = new Class({
                 }
                 else
                 {
-                    this.current = this.start;
+                    this.current = this.getStartValue(target, key, target[key], targetIndex, totalTargets, tween);
 
                     target[key] = this.start;
 
