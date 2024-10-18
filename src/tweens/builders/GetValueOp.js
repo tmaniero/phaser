@@ -214,15 +214,13 @@ var GetValueOp = function (key, propertyValue)
     }
     else if (t === 'object')
     {
-        if (propertyValue instanceof Phaser.Math.Vector3)
+        if (propertyValue instanceof Phaser.Math.Vector2 || propertyValue instanceof Phaser.Math.Vector3)
         {
-            getEnd = function ()
+            getStart = function (target, key, value)
             {
-                return propertyValue.clone();
+                return (value instanceof Phaser.Math.Vector2 || value instanceof Phaser.Math.Vector3) ? value.clone() : value;
             };
-        }
-        else if (propertyValue instanceof Phaser.Math.Vector2)
-        {
+
             getEnd = function ()
             {
                 return propertyValue.clone();

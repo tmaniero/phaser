@@ -635,7 +635,7 @@ var BaseTweenData = new Class({
 
             if (isTweenData)
             {
-                this.current = this.start;
+                this.current = this.getStartValue(target, key, this.start, targetIndex, totalTargets, tween);
 
                 target[key] = this.current;
             }

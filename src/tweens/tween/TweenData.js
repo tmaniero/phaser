@@ -267,9 +267,9 @@ var TweenData = new Class({
 
             this.end = this.getEndValue(target, key, this.start, targetIndex, totalTargets, tween);
 
-            this.current = this.start;
+            this.current = this.getStartValue(target, key, target[key], targetIndex, totalTargets, tween);
 
-            target[key] = this.start;
+            target[key] = this.current;
 
             this.setPlayingForwardState();
 
@@ -285,6 +285,7 @@ var TweenData = new Class({
             var duration = this.duration;
             var diff = 0;
             var complete = false;
+            var mathVectorTween = true;
 
             elapsed += delta;
 
@@ -321,11 +322,13 @@ var TweenData = new Class({
                 this.current.x = this.start.x + ((this.end.x - this.start.x) * v);
                 this.current.y = this.start.y + ((this.end.y - this.start.y) * v);
                 this.current.z = this.start.z + ((this.end.z - this.start.z) * v);
+                mathVectorTween = true;
             }
             else if (this.current instanceof Phaser.Math.Vector2)
             {
                 this.current.x = this.start.x + ((this.end.x - this.start.x) * v);
                 this.current.y = this.start.y + ((this.end.y - this.start.y) * v);
+                mathVectorTween = true;
             }
             else
             {
@@ -338,10 +341,10 @@ var TweenData = new Class({
             {
                 if (forward)
                 {
-                    if (tween.isNumberTween)
+                    if (tween.isNumberTween || mathVectorTween)
                     {
                         this.current = this.end;
-                        target[key] = this.current;
+                        target[key] = this.end;
                     }
 
                     if (this.hold > 0)
@@ -357,10 +360,10 @@ var TweenData = new Class({
                 }
                 else
                 {
-                    if (tween.isNumberTween)
+                    if (tween.isNumberTween || mathVectorTween)
                     {
                         this.current = this.start;
-                        target[key] = this.current;
+                        target[key] = this.start;
                     }
 
                     this.setStateFromStart(diff);
