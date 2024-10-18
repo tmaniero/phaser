@@ -101,6 +101,8 @@ var MeshWebGLRenderer = function (renderer, src, camera, parentMatrix)
 
     src.totalFrame += totalFacesRendered;
 
+    pipeline.onBatch(src);
+
     if (debugCallback)
     {
         debugCallback.call(src, src, debugFaces);
