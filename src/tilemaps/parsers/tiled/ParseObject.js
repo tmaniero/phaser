@@ -9,7 +9,7 @@ var ParseGID = require('./ParseGID');
 
 var copyPoints = function (p) { return { x: p.x, y: p.y }; };
 
-var commonObjectProps = [ 'id', 'name', 'type', 'rotation', 'properties', 'visible', 'x', 'y', 'width', 'height' ];
+var commonObjectProps = [ 'id', 'name', 'type', 'class', 'rotation', 'properties', 'visible', 'x', 'y', 'width', 'height' ];
 
 /**
  * Convert a Tiled object to an internal parsed object normalising and copying properties over, while applying optional x and y offsets. The parsed object will always have the properties `id`, `name`, `type`, `rotation`, `properties`, `visible`, `x`, `y`, `width` and `height`. Other properties will be added according to the object type (such as text, polyline, gid etc.)
