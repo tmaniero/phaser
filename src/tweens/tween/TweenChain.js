@@ -352,6 +352,8 @@ var TweenChain = new Class({
         }
         else
         {
+            this.dispatchEvent(Events.TWEEN_START, 'onStart');
+
             this.setActiveState();
         }
 
