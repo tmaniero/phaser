@@ -52,6 +52,20 @@ var AssignTileProperties = function (mapData)
                 tile.width = set.tileWidth;
                 tile.height = set.tileHeight;
 
+                // if that tile type or class is set extract it
+                if (set.tileData && set.tileData[tile.index - set.firstgid])
+                {
+                    if (set.tileData[tile.index - set.firstgid].type)
+                    {
+                        tile.type = set.tileData[tile.index - set.firstgid].type;
+                    }
+
+                    if (set.tileData[tile.index - set.firstgid].class)
+                    {
+                        tile.class = set.tileData[tile.index - set.firstgid].class;
+                    }
+                }
+
                 // if that tile type has any properties, add them to the tile object
                 if (set.tileProperties && set.tileProperties[tile.index - set.firstgid])
                 {

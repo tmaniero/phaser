@@ -95,6 +95,12 @@ var ParseTilesets = function (json)
                         {
                             (datas[tile.id] || (datas[tile.id] = {})).type = tile.type;
                         }
+
+                        // Copy tile `class` field
+                        if (tile.class)
+                        {
+                            (datas[tile.id] || (datas[tile.id] = {})).class = tile.class;
+                        }
                     }
                 }
 
