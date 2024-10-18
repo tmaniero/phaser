@@ -57,6 +57,7 @@ var Image = require('../image/Image');
  * @param {number} [width=32] - The width of the Render Texture.
  * @param {number} [height=32] - The height of the Render Texture.
  * @param {boolean} [forceEven=true] - Force the given width and height to be rounded to even values. This significantly improves the rendering quality. Set to false if you know you need an odd sized texture.
+ * @param {string} [key=''] - The key of the Render Texture.
  */
 var RenderTexture = new Class({
 
@@ -64,15 +65,24 @@ var RenderTexture = new Class({
 
     initialize:
 
-    function RenderTexture (scene, x, y, width, height, forceEven)
+    function RenderTexture (scene, x, y, width, height, forceEven, key)
     {
         if (x === undefined) { x = 0; }
         if (y === undefined) { y = 0; }
         if (width === undefined) { width = 32; }
         if (height === undefined) { height = 32; }
         if (forceEven === undefined) { forceEven = true; }
+        if (key === undefined) { key = ''; }
 
-        var dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height, forceEven);
+        var dynamicTexture;
+        if (key === '')
+        {
+            dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height, forceEven);
+        }
+        else
+        {
+            dynamicTexture = scene.sys.textures.addDynamicTexture(key, width, height);
+        }
 
         Image.call(this, scene, x, y, dynamicTexture);
 

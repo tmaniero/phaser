@@ -32,10 +32,11 @@ var RenderTexture = require('./RenderTexture');
  * @param {number} y - The vertical position of this Game Object in the world.
  * @param {number} [width=32] - The width of the Render Texture.
  * @param {number} [height=32] - The height of the Render Texture.
+ * @param {string} [key=''] - The key of the Render Texture.
  *
  * @return {Phaser.GameObjects.RenderTexture} The Game Object that was created.
  */
-GameObjectFactory.register('renderTexture', function (x, y, width, height)
+GameObjectFactory.register('renderTexture', function (x, y, width, height, key)
 {
-    return this.displayList.add(new RenderTexture(this.scene, x, y, width, height));
+    return this.displayList.add(new RenderTexture(this.scene, x, y, width, height, true, key));
 });

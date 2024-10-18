@@ -43,8 +43,9 @@ GameObjectCreator.register('renderTexture', function (config, addToScene)
     var y = GetAdvancedValue(config, 'y', 0);
     var width = GetAdvancedValue(config, 'width', 32);
     var height = GetAdvancedValue(config, 'height', 32);
+    var key = GetAdvancedValue(config, 'key', '');
 
-    var renderTexture = new RenderTexture(this.scene, x, y, width, height);
+    var renderTexture = new RenderTexture(this.scene, x, y, width, height, true, key);
 
     if (addToScene !== undefined)
     {
