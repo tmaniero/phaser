@@ -63,14 +63,23 @@ var RenderTexture = new Class({
 
     initialize:
 
-    function RenderTexture (scene, x, y, width, height)
+    function RenderTexture (scene, x, y, width, height, key)
     {
         if (x === undefined) { x = 0; }
         if (y === undefined) { y = 0; }
         if (width === undefined) { width = 32; }
         if (height === undefined) { height = 32; }
+        if (key === undefined) { key = ''; }
 
-        var dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height);
+        var dynamicTexture;
+        if (key === '')
+        {
+            dynamicTexture = new DynamicTexture(scene.sys.textures, '', width, height);
+        }
+        else
+        {
+            dynamicTexture = scene.sys.textures.addDynamicTexture(key, width, height);
+        }
 
         Image.call(this, scene, x, y, dynamicTexture);
 
