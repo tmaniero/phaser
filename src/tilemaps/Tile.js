@@ -172,6 +172,20 @@ var Tile = new Class({
         this.updatePixelXY();
 
         /**
+         * Tile specific type. These usually come from Tiled.
+         *
+         * @name Phaser.Tilemaps.Tile#type
+         * @type {number}
+         */
+
+        /**
+         * Tile specific class. These usually come from Tiled.
+         *
+         * @name Phaser.Tilemaps.Tile#class
+         * @type {number}
+         */
+
+        /**
          * Tile specific properties. These usually come from Tiled.
          *
          * @name Phaser.Tilemaps.Tile#properties
