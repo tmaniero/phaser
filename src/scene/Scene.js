@@ -304,6 +304,40 @@ var Scene = new Class({
         this.renderer;
     },
 
+    
+
+    /**
+     * Sets the value of the time scale applied to this Scene. A value of 1 runs in real-time.
+     * A value of 0.5 runs 50% slower, and so on.
+     *
+     * @method Phaser.Scene#setTimeScale
+     * @since 3.82.0
+     *
+     * @param {number} value - The time scale value to set.
+     *
+     * @return {this} This Scene instance.
+     */
+    setTimeScale: function (value)
+    {
+        this.sys.timeScale = value;
+        this.tweens.setGlobalTimeScale(value);
+        return this;
+    },
+
+    /**
+     * Gets the value of the time scale applied to this Scene. A value of 1 runs in real-time.
+     * A value of 0.5 runs 50% slower, and so on.
+     *
+     * @method Phaser.Scene#getTimeScale
+     * @since 3.82.0
+     *
+     * @return {number} The value of the time scale applied to this Tween.
+     */
+    getTimeScale: function ()
+    {
+        return this.sys.timeScale;
+    },
+
     /**
      * This method should be overridden by your own Scenes.
      *

@@ -302,6 +302,17 @@ var Systems = new Class({
          * @since 3.10.0
          */
         this.sceneUpdate = NOOP;
+
+        /**
+         * The Scene time scale factor.
+         *
+         * @name Phaser.Scenes.Systems#timeScale
+         * @type {number}
+         * @since 3.82.0
+         */
+        this.timeScale = 1;
+
+        this._timeacc = 0;
     },
 
     /**
@@ -355,6 +366,11 @@ var Systems = new Class({
      */
     step: function (time, delta)
     {
+        // mod delta and time with timeScale
+        delta *= this.timeScale;
+        this._timeacc += delta;
+        time = this._timeacc;
+
         var events = this.events;
 
         events.emit(Events.PRE_UPDATE, time, delta);
